@@ -23,8 +23,8 @@ public class main
         
     }
     public void getInput(){
-         System.out.println("Please type the unit  name");
-         unitName.add((new Scanner(System.in).nextString()));
+         System.out.println("Please type the unit name");
+         unitName=((new Scanner(System.in).next()));
     }
     
 }
