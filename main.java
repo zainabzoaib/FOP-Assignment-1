@@ -27,7 +27,7 @@ public class main
     }
     
     public void getMarks(){
-        for(int i=1;i<=5;i++){
+        for(int i=1;i<=25;i++){
         boolean correctInput=false;
         do{
          System.out.println("Please type the students marks");
