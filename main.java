@@ -1,5 +1,4 @@
-import java.util.Scanner;
-import java.util.ArrayList;
+
 /**
  * Write a description of class main here.
  *
@@ -9,7 +8,8 @@ import java.util.ArrayList;
 public class main
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private String unitName;
+    private int stdMarks;
 
     /**
      * Constructor for objects of class main
