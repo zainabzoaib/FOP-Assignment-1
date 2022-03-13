@@ -18,13 +18,22 @@ public class main
     public main()
     {
         // initialise instance variables
-        getInput();
-        
+        getUnitName();
+        getMarks();
         
     }
-    public void getInput(){
+    public void getUnitName(){
          System.out.println("Please type the unit name");
          unitName=((new Scanner(System.in).next()));
+    }
+    
+     public void getMarks(){
+         System.out.println("Please type the students marks");
+         unitName=((new Scanner(System.in).next()));
+    }
+    
+    public static void main(String[] args){
+        main myObj=new main();
     }
     
 }
