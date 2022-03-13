@@ -1,4 +1,5 @@
-
+import java.util.Scanner;
+import java.util.ArrayList;
 /**
  * Write a description of class main here.
  *
@@ -17,18 +18,13 @@ public class main
     public main()
     {
         // initialise instance variables
-        x = 0;
+        getInput();
+        
+        
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public void getInput(){
+         System.out.println("Please type the unit  name");
+         unitName.add((new Scanner(System.in).nextString()));
     }
+    
 }
