@@ -28,9 +28,19 @@ public class main
     }
     
      public void getMarks(){
+         boolean correctInput=false;
+        do{
          System.out.println("Please type the students marks");
-         unitName=((new Scanner(System.in).next()));
+         stdMarks=((new Scanner(System.in).nextInt()));
+         if(stdMarks < 0 && stdMarks>100){
+            correctInput=true;
+            }else{
+                System.out.println("Incorrect value, please type a number between 0 and 100");
+            }
+             }while(!correctInput);
+        }
     }
+}
     
     public static void main(String[] args){
         main myObj=new main();
