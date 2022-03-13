@@ -27,6 +27,7 @@ public class main
     }
     
     public void getMarks(){
+        for(int i=1;i<=5;i++){
         boolean correctInput=false;
         do{
          System.out.println("Please type the students marks");
@@ -37,13 +38,11 @@ public class main
                 System.out.println("Incorrect value, please type a number between 0 and 100");
             }
              }while(!correctInput);   
-             for(int i=0;i<=25;i++){
-                 System.out.println("not more than 25");
-                }
+             
+        }
         }
         
     public static void main(String[] args){
-        
         main myObj=new main();
     }
     
