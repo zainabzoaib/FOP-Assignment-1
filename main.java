@@ -11,6 +11,7 @@ public class main
     // instance variables - replace the example below with your own
     private String unitName;
     private int stdMarks;
+    private int stdInClass;
 
     /**
      * Constructor for objects of class main
@@ -28,6 +29,8 @@ public class main
     }
     
     public void getMarks(){
+        int i=0;
+        while(stdInClass<=25){
         boolean correctInput=false;
         do{
          System.out.println("Please type the students marks");
@@ -37,12 +40,14 @@ public class main
             }else{
                 System.out.println("Incorrect value, please type a number between 0 and 100");
             }
-             }while(!correctInput);
-        }
-
-    
+             }while(!correctInput);   
+        i++;
+        } 
+    }
+        
     public static void main(String[] args){
         main myObj=new main();
     }
     
 }
+
