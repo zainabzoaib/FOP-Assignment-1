@@ -9,7 +9,8 @@ import java.util.ArrayList;
 public class main {
   // instance variables - replace the example below with your own
   private String unitName;
-  private ArrayList < Double > stdMarks = new ArrayList < Double > ();
+  private ArrayList <Double> stdMarks = new ArrayList <Double> ();
+  private double sum = 0;
 
   /**
    * Constructor for objects of class main
@@ -18,7 +19,8 @@ public class main {
     // initialise instance variables
     getUnitName();
     getMarks();
-    findMinandMax();
+    //findMinandMax();
+    calculateMean();
   }
   public void getUnitName() {
     System.out.println("Please type the unit name");
@@ -42,10 +44,18 @@ public class main {
 
       }
     }
-    while (!numberInput && i <= 25);
+    while (!numberInput && i <=25);
     System.out.println(unitName.toString());
     System.out.println(stdMarks.toString());
   }
+  public void calculateMean(){
+      int numStudents = stdMarks.size();
+        for(Double d : stdMarks) {
+        sum += d;
+        } 
+        double mean = sum/numStudents;
+    System.out.println("Total mean of student marks: "+mean);
+    }
 
   public void findMinandMax() {
 
