@@ -1,97 +1,142 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 /**
- * Write a description of class main here.
+ * Allow users to input the unit name.
+ * Allow users to input the students’ marks accepting number between 0 and 100 with error 
+warning.
+ * Print the unit name following with the students marks.
+ * Find the highest mark and the lowest mark and print the result.
+ * Calculate the mean and standard deviation of the marks and print the result.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Zainab 23622348
+ * @version 1.0
+ * @git url https://github.com/zainabzoaib/FOP-Assignment-1
  */
 public class main {
-    // instance variables - replace the example below with your own
+    //setting class variables
     private String unitName;
-    private ArrayList <Double> stdMarks = new ArrayList <Double> ();
+    private ArrayList<Double> stdMarks = new ArrayList<Double>();
     private double sum = 0;
     private double maxValue;
     private double minValue;
-    
-    
+
     /**
      * Constructor for objects of class main
      */
     public main() {
-        // initialise instance variables
+        //calling methods
+        //getting unit name
         getUnitName();
+        //getting student marks
         getMarks();
+        //finding minimum and maximum marks
         findMinandMax();
-        calculateMean();
+        //calculation of mean and standard deviation of marks
+        calculateMeanandDeviation();
     }
 
     public void getUnitName() {
+        //system.out to get user input
         System.out.println("Please type the unit name");
+        //setting user input to class variable unitName
         unitName = ((new Scanner(System.in).next()));
     }
 
     public void getMarks() {
+        //getting marks for 25 students in class
+        //setting number input to false in order to validate correct input 
         boolean numberInput = false;
+        //initial value for loop
         int i = 1;
         do {
+            //system.out to get user input for student marks
             System.out.println("Please type the students marks");
+            //setting user input to marks
             double marks = new Scanner(System.in).nextDouble();
+            //checking if marks are > than 0 and <= 100
             if (marks > 0 && marks <= 100) {
+                //adding double marks to arraylist stdMarks
                 stdMarks.add(marks);
+                //adding loop initail value
                 i++;
 
             } else {
+                //system.out error for incorrect input value
                 System.out.println("Incorrect value, please type a number between 0 and 100");
+                //setting number input false to get input for correct value
                 numberInput = false;
-                i--;
 
             }
         }
-        while (!numberInput && i <=5);
+        //loop condition to run 25 times 
+        while (!numberInput && i <= 25);
+        //printing unit name
         System.out.println(unitName.toString());
+        //priniting marks
         System.out.println(stdMarks.toString());
     }
 
-    public void calculateMean(){
-        int numStudents = stdMarks.size();
-        for(Double d : stdMarks) {
-            sum += d;
-        } 
-        double mean = sum/numStudents;
-        System.out.println("Total mean of student marks: "+ mean);
-        
-        double sum = 0.0;
-        double standardDeviation = 0.0;
-        int length = stdMarks.size();
-
-        for(double num: stdMarks) {
-            standardDeviation += Math.pow(num - mean, 2);
-        }
-
-        double deviation =  Math.sqrt(standardDeviation/length);
-        System.out.println("Deviation of student marks: "+ deviation);
-    }
-
     public void findMinandMax() {
+        //finding maximum marks from entered values
+        // initialising maxValue
         double maxValue = stdMarks.get(0);
-        for (int i=1; i < stdMarks.size(); i++){
+        //initialising loop to check maximum marks
+        for (int i = 1; i < stdMarks.size(); i++){
+            //if loop value is greater than maxValue
             if(stdMarks.get(i) > maxValue){
+                //setting maxVale to loop value
                 maxValue = stdMarks.get(i);
 
             }
         }
+        //finding minimum marks from entered values
+        // initialising minValue
         double minValue = stdMarks.get(0);
-        for (int i=1; i< stdMarks.size(); i++){
+        //initialising loop to check minimum marks
+        for (int i = 1; i < stdMarks.size(); i++){
+            //if loop value is less than minValue
             if(stdMarks.get(i) < minValue){
+                //setting minVale to loop value
                 minValue = stdMarks.get(i);
             }
         }
-        System.out.println("Maximum student marks is: "+ maxValue);
-        System.out.println("Minimum student marks is: "+ minValue);
+        //priniting maximum marks
+        System.out.println("Highest student marks is: " + maxValue);
+        // printing minimum marks
+        System.out.println("Lowest student marks is: " + minValue);
+    }
+
+    public void calculateMeanandDeviation(){
+        //calculating mean and standard deviation
+        //get size of stdMarks arraylist as numStudents 
+        int numStudents = stdMarks.size();
+        //looping students marks as student mark
+        for(double d : stdMarks) {
+            //adding value to total sum
+            sum += d;
+        }
+        //sum divided by number of students to get mean
+        double mean = sum/numStudents;
+        //printing mean
+        System.out.println("Total mean of student marks: " + mean);
+        //initialise standard deviation variable with value 0
+        double standardDeviation = 0.0;
+
+        //looping student marks
+        for(double num: stdMarks) {
+            //setting standard deviation with formula marks - mean to calculate the number 
+            //raise to the power 2
+            standardDeviation += Math.pow(num - mean, 2);
+        }
+        //setting standard deviation divided by number of students with square root to 
+        //deviation
+        double deviation =  Math.sqrt(standardDeviation/numStudents);
+        // printing standard deviation
+        System.out.println("Standard Deviation of student marks: " + deviation);
     }
 
     public static void main(String[] args) {
+        // intialising class to call constructor
         main myObj = new main();
     }
 
