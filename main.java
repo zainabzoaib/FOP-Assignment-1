@@ -11,7 +11,8 @@ public class main {
   private String unitName;
   private ArrayList <Double> stdMarks = new ArrayList <Double> ();
   private double sum = 0;
-
+  private double maxValue;
+    private double minValue;
   /**
    * Constructor for objects of class main
    */
@@ -19,7 +20,7 @@ public class main {
     // initialise instance variables
     getUnitName();
     getMarks();
-    //findMinandMax();
+    findMinandMax();
     calculateMean();
   }
   public void getUnitName() {
@@ -54,11 +55,25 @@ public class main {
         sum += d;
         } 
         double mean = sum/numStudents;
-    System.out.println("Total mean of student marks: "+mean);
+    System.out.println("Total mean of student marks: "+ mean);
     }
 
   public void findMinandMax() {
-
+      double maxValue = stdMarks.get(0);
+      for (int i=1; i < stdMarks.size(); i++){
+          if(stdMarks.get(i) > maxValue){
+              maxValue = stdMarks.get(i);
+              
+        }
+    }
+        double minValue = stdMarks.get(0);
+      for (int i=1; i< stdMarks.size(); i++){
+          if(stdMarks.get(i) < minValue){
+              minValue = stdMarks.get(i);
+            }
+        }
+        System.out.println("Maximum student marks is: "+ maxValue);
+        System.out.println("Minimum student marks is: "+ minValue);
   }
 
   public static void main(String[] args) {
