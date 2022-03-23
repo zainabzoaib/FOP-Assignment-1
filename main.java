@@ -19,6 +19,8 @@ public class main {
     private double sum = 0;
     private double maxValue;
     private double minValue;
+    private int numStudents;
+    private double mean;    
 
     /**
      * Constructor for objects of class main
@@ -30,9 +32,12 @@ public class main {
         //getting student marks
         getMarks();
         //finding minimum and maximum marks
-        findMinandMax();
-        //calculation of mean and standard deviation of marks
-        calculateMeanandDeviation();
+        findMaxMarks();
+        findMinMarks();
+        //calculation of mean of marks
+        calculateMean();
+        //calculation of standard deviation of marks
+        calculateDeviation();
     }
 
     public void getUnitName() {
@@ -76,9 +81,9 @@ public class main {
         System.out.println(stdMarks.toString());
     }
 
-    public void findMinandMax() {
+    public void findMaxMarks() {
         //finding maximum marks from entered values
-        // initialising maxValue
+        //initialising maxValue
         double maxValue = stdMarks.get(0);
         //initialising loop to check maximum marks
         for (int i = 1; i < stdMarks.size(); i++){
@@ -89,8 +94,16 @@ public class main {
 
             }
         }
+
+        //priniting maximum marks
+        System.out.println("Highest student marks is: " + maxValue);
+
+    }
+
+    public void findMinMarks() {
+
         //finding minimum marks from entered values
-        // initialising minValue
+        //initialising minValue
         double minValue = stdMarks.get(0);
         //initialising loop to check minimum marks
         for (int i = 1; i < stdMarks.size(); i++){
@@ -100,13 +113,11 @@ public class main {
                 minValue = stdMarks.get(i);
             }
         }
-        //priniting maximum marks
-        System.out.println("Highest student marks is: " + maxValue);
-        // printing minimum marks
+        //printing minimum marks
         System.out.println("Lowest student marks is: " + minValue);
     }
 
-    public void calculateMeanandDeviation(){
+    public void calculateMean(){
         //calculating mean and standard deviation
         //get size of stdMarks arraylist as numStudents 
         int numStudents = stdMarks.size();
@@ -119,7 +130,11 @@ public class main {
         double mean = sum/numStudents;
         //printing mean
         System.out.println("Total mean of student marks: " + mean);
+    }
+
+    public void calculateDeviation(){
         //initialise standard deviation variable with value 0
+        int numStudents = stdMarks.size();
         double standardDeviation = 0.0;
 
         //looping student marks
@@ -131,12 +146,12 @@ public class main {
         //setting standard deviation divided by number of students with square root to 
         //deviation
         double deviation =  Math.sqrt(standardDeviation/numStudents);
-        // printing standard deviation
+        //printing standard deviation
         System.out.println("Standard Deviation of student marks: " + deviation);
     }
 
     public static void main(String[] args) {
-        // intialising class to call constructor
+        //intialising class to call constructor
         main myObj = new main();
     }
 
