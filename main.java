@@ -44,7 +44,7 @@ public class main {
         //system.out to get user input
         System.out.println("Please type the unit name");
         //setting user input to class variable unitName
-        unitName = ((new Scanner(System.in).next()));
+        unitName = ((new Scanner(System.in).nextLine()));
     }
 
     public void getMarks() {
@@ -56,29 +56,34 @@ public class main {
         do {
             //system.out to get user input for student marks
             System.out.println("Please type the students marks");
-            //setting user input to marks
-            double marks = new Scanner(System.in).nextDouble();
-            //checking if marks are > than 0 and <= 100
-            if (marks > 0 && marks <= 100) {
-                //adding double marks to arraylist stdMarks
-                stdMarks.add(marks);
-                //adding loop initail value
-                i++;
-
-            } else {
-                //system.out error for incorrect input value
-                System.out.println("Incorrect value, please type a number between 0 and 100");
-                //setting number input false to get input for correct value
-                numberInput = false;
-
+            try {
+                //setting user input to marks
+                String strMarks = new Scanner(System.in).nextLine();
+                //checking if marks are > than 0 and <= 100
+                double marks = Double.parseDouble(strMarks);
+                if (marks > 0 && marks <= 100) {
+                    //adding double marks to arraylist stdMarks
+                    stdMarks.add(marks);
+                    //adding loop initail value
+                    i++;
+    
+                } else {
+                    //system.out error for incorrect input value
+                    System.out.println("Incorrect value, please type a number between 0 and 100");
+                    //setting number input false to get input for correct value
+                    numberInput = false;
+    
+                }
+            }catch(NumberFormatException ex) {
+               System.out.println("Incorrect value, please type a number."); 
             }
         }
         //loop condition to run 25 times 
         while (!numberInput && i <= 25);
         //printing unit name
-        System.out.println(unitName.toString());
+        System.out.println("Unit Name : " + unitName.toString());
         //priniting marks
-        System.out.println(stdMarks.toString());
+        System.out.println("Student Marks : " + stdMarks.toString());
     }
 
     public void findMaxMarks() {
@@ -133,8 +138,9 @@ public class main {
     }
 
     public void calculateDeviation(){
-        //initialise standard deviation variable with value 0
+        //get size of stdMarks arraylist as numStudents 
         int numStudents = stdMarks.size();
+        //initialise standard deviation variable with value 0
         double standardDeviation = 0.0;
 
         //looping student marks
